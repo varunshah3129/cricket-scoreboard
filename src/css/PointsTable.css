@@ -1,0 +1,92 @@
+.points-table-container {
+    margin: 20px 0;
+}
+
+.points-table-group h3 {
+    color: #4E2E84; /* The color for the group name */
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.points-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.points-table th, .points-table td {
+    border: none;
+    border-bottom: 1px solid #ddd; /* Only bottom border */
+    padding: 12px;
+    text-align: left;
+}
+
+.points-table th {
+    background-color: #4E2E84; /* Match group name color */
+    color: white;
+    padding: 12px;
+}
+
+.points-table td {
+    color: #333; /* Dark text color */
+}
+
+.points-table .team-name {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    color: #0D0141; /* Dark purple text color for team name */
+}
+
+.team-flag {
+    width: 24px;
+    height: 18px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.no-points-table {
+    text-align: center;
+    font-size: 18px;
+    color: #666;
+    margin-top: 20px;
+}
+
+.points-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.points-table tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+.points-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.subgroup-filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.group-subgroup-filter-button {
+    padding: 6px 12px;
+    font-size: 0.875rem;
+    border: 2px solid #007bff;
+    background-color: transparent;
+    color: #007bff;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.group-subgroup-filter-button.active {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.group-subgroup-filter-button:hover {
+    background-color: #0056b3;
+    color: #fff;
+    border-color: #0056b3;
+}

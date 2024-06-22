@@ -1,0 +1,86 @@
+.full-score-details {
+    margin: 20px;
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+}
+
+.innings-section {
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.innings-section:hover {
+    transform: scale(1.02);
+}
+
+.innings-title {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    color: #007BFF;
+    border-bottom: 2px solid #007BFF;
+    padding-bottom: 5px;
+}
+
+.section-title {
+    font-size: 1.4em;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.score-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    overflow-x: auto;
+    display: block;
+}
+
+.score-table th, .score-table td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.score-table th {
+    background-color: #007BFF;
+    color: white;
+}
+
+.score-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.score-table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+@media (max-width: 768px) {
+    .full-score-details {
+        margin: 10px;
+        padding: 10px;
+    }
+
+    .innings-section {
+        padding: 15px;
+    }
+
+    .innings-title {
+        font-size: 1.5em;
+    }
+
+    .section-title {
+        font-size: 1.2em;
+    }
+
+    .score-table th, .score-table td {
+        padding: 8px;
+    }
+
+    .score-table {
+        font-size: 0.9em;
+    }
+}

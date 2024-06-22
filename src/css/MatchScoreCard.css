@@ -1,0 +1,159 @@
+.match-scorecard {
+    position: relative;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: auto;
+    width: 100%;
+    margin-bottom: 10px;
+    overflow: hidden; /* Prevent overflow */
+}
+
+.match-header, .team, .match-result {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.match-status {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-weight: bold;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    text-transform: uppercase;
+    color: white;
+}
+
+.match-status.in-progress {
+    background-color: #32CD32;
+}
+
+.match-status.stumps {
+    background-color: #FFC300;
+}
+
+.match-status.complete {
+    background-color: #7D3C98;
+}
+
+.match-venue {
+    font-style: italic;
+    font-size: 0.9em;
+    color: #666;
+}
+
+.team {
+    flex-grow: 1;
+}
+
+.team-name {
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-align: left;
+}
+
+.team-score {
+    text-align: right;
+    font-size: 0.9rem;
+}
+
+.match-result {
+    text-align: left;
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-top: 20px;
+    max-width: 350px;
+}
+
+@media (max-width: 768px) {
+    .match-scorecard {
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+
+    .match-detail {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .match-status {
+        padding: 5px 10px;
+        font-size: 0.75em;
+    }
+
+    .team-info {
+        font-size: 0.9rem;
+        flex-direction: column;
+    }
+
+    .team-name, .team-score {
+        font-size: 1em;
+    }
+
+    .match-result {
+        text-align: left;
+        font-size: 0.9rem;
+        max-width: 150px;
+    }
+}
+
+.last-refresh-time {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 10px;
+}
+
+.spinner-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5em;
+    color: #000;
+}
+
+.match-scorecard.expanded {
+    background-color: #f9f9f9;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+    transform: scale(1.02);
+    padding-bottom: 40px; /* Extra space for the expand icon */
+    margin-bottom: 40px; /* Ensure there's enough space for expanded content */
+    margin-top: 40px;
+}
+
+.expanded-scorecard {
+    padding-top: 20px;
+}
+
+.expand-icon-container {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.expand-icon {
+    font-size: 1.5em;
+}
+
+.expand-tooltip {
+    display: none;
+    margin-left: 5px;
+    font-size: 0.85em;
+    color: #333;
+}
+
+.expand-icon-container:hover .expand-tooltip {
+    display: inline;
+}

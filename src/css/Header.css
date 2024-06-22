@@ -1,0 +1,178 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+    height: 80px;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1366px;
+    margin: auto;
+}
+
+.menu-button {
+    display: none; /* Hidden in desktop view */
+    margin-left: auto; /* Pushes the button to the right */
+    background-color: #0056b3; /* Example: Change to your preferred solid color */
+    color: #ffffff; /* Adjust text/icon color as needed */
+    border: none; /* Remove any default border */
+    padding: 10px; /* Adjust padding as needed for sizing */
+    border-radius: 5px; /* Optional: Adds rounded corners */
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-link {
+    color: #333;
+    text-decoration: none;
+    margin: 0 20px;
+    padding: 10px 10px !important;
+}
+
+.desktop-search-signin {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.search-container {
+    position: relative;
+    width: 400px;
+    margin-right: 20px;
+}
+
+.search-bar {
+    width: 100%;
+    padding: 12px 20px;
+    border-radius: 30px;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    background: #F0F0F0;
+}
+
+.search-icon {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    background-color: #ffffff; /* Set your desired background color */
+    color: #000000; /* Set the color of the search icon */
+    border-radius: 50%; /* Makes the background circle */
+    padding: 10px; /* Adjust the space around the icon */
+    box-shadow: 0px 0px 5px #000000; /* Adds a shadow for depth, adjust as needed */
+}
+
+.sign-in-button {
+    background: #0056b3;
+    color: #ffffff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sign-in-button:hover {
+    background-color: #003d82;
+}
+
+.menu-button {
+    display: none;
+}
+
+.backdrop {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,.5);
+    z-index: 1000;
+}
+
+/* For desktop view */
+.desktop-search-signin .search-container {
+    order: 1; /* First item */
+}
+
+.desktop-search-signin .sign-in-button {
+    order: 2; /* Second item */
+}
+.nav-link.active {
+    color: #000000;
+    border-bottom: 3px solid #003d82;
+}
+
+/* Adjustments for mobile and tablet view */
+@media (max-width: 1024px) {
+    .menu-button {
+        display: block;
+    }
+
+    .header-container {
+        justify-content: flex-start;
+        max-width: none;
+    }
+
+    .navigation {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        bottom: 0;
+        width: 250px;
+        background-color: #fff;
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: 2px 0 5px rgba(0,0,0,.3);
+        z-index: 1100;
+        transition: left 0.3s;
+        gap: 20px;
+    }
+
+    .navigation.open {
+        left: 0;
+    }
+
+    .navigation .nav-link,
+    .navigation .search-container,
+    .navigation .sign-in-button {
+        margin: 0;
+        padding: 10px 0;
+        width: 100%;
+    }
+
+    .search-icon {
+        padding: 8px;
+    }
+
+    .search-bar {
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+
+    .backdrop {
+        display: block;
+    }
+}

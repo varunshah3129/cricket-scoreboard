@@ -1,0 +1,11 @@
+.text-bold {
+    font-weight: bold !important;
+}
+
+/* You can still keep your media query if you want to override Bootstrap's responsive design */
+@media (max-width: 768px) {
+    .card.mb-3 {
+        margin: 5px !important;
+        padding: 5px !important;
+    }
+}

@@ -1,0 +1,191 @@
+.matches-container {
+    font-family: 'Arial', sans-serif;
+    background-color: #fff;
+    padding: 10px 0;
+}
+
+.filter-buttons {
+    display: flex;
+    justify-content: center;
+    background-color: #f2f2f2;
+    padding: 10px 0;
+    gap: 10px;
+}
+
+.filter-button {
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: none;
+    background-color: #f2f2f2;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.filter-button.active {
+    color: #000000;
+    border-bottom: 3px solid #003d82;
+}
+
+.filter-button:hover {
+    background-color: #e7f1ff;
+}
+
+.subfilter-buttons {
+    margin-top: 20px;
+    display: flex;
+    overflow-x: auto;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.subfilter-buttons::-webkit-scrollbar {
+    display: none;  /* Chrome, Safari, Opera */
+}
+
+.sub-filter-button {
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-right: 5px;
+    padding: 6px 12px;
+    font-size: 0.875rem;
+    border: 2px solid #007bff;
+    transition: all 0.2s;
+}
+
+.sub-filter-button.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.sub-filter-button.btn-outline-primary:hover,
+.sub-filter-button.btn-primary:hover {
+    background-color: #0056b3;
+    color: #fff;
+    border-color: #0056b3;
+}
+
+.sub-filter-button.btn-outline-primary {
+    background-color: transparent;
+    color: #007bff;
+}
+
+@media (max-width: 768px) {
+    .filter-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .filter-button:not(:last-child) {
+        margin-bottom: 10px;
+    }
+
+    .subfilter-buttons {
+        justify-content: flex-start;
+    }
+}
+
+@media (min-width: 769px) {
+    .subfilter-buttons {
+        justify-content: center;
+    }
+}
+
+.matches-list {
+    padding: 20px;
+}
+
+.match-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.match-league, .match-score, .match-status {
+    font-weight: bold;
+    color: #007bff;
+}
+
+.match-detail {
+    display: flex;
+    align-items: center;
+}
+
+.match-score, .match-status {
+    font-size: 0.9rem;
+}
+
+.match-status {
+    padding: 5px 10px;
+    border-radius: 15px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.match-status.live {
+    background-color: #ff3e3e;
+}
+
+.match-status.recent {
+    background-color: #28a745;
+}
+
+.match-status.upcoming {
+    background-color: #ffc107;
+}
+
+.match-card-container {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.no-matches-found p {
+    font-size: 16px;
+    color: #666;
+    text-align: center;
+}
+
+.reset-filter-button {
+    border-radius: 30px;
+    padding: 6px 12px;
+    font-size: 0.875rem;
+    font-weight: 700 !important;
+    transition: background-color 0.3s, color 0.3s;
+    white-space: nowrap;
+}
+
+.reset-filter-button:hover {
+    background-color: #c82333;
+    color: white;
+    border: 1px solid #bd2130;
+}
+
+.filter-divider {
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.has-matches {
+    font-weight: 700 !important;
+}
+
+.text-align-center {
+    text-align: center;
+}
+
+.match-level {
+    padding: 5px;
+    border-width: 1px;
+    border-radius: .5rem;
+    background: #0056b3;
+    color: #F0F0F0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+[class^="match-type-"] {
+    border: 1px solid grey !important;
+}
