@@ -157,7 +157,7 @@ const Matches = () => {
                         );
                     })}
 
-                    {/* Rendering subfilter buttons for match format */}
+                    {}
                     {['TEST', 'ODI', 'T20'].map(format => {
                         const hasMatches = matchesData.typeMatches.some(series =>
                             series.seriesMatches.some(seriesMatch =>

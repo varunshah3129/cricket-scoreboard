@@ -12,7 +12,7 @@
     height: auto;
     width: 100%;
     margin-bottom: 10px;
-    overflow: hidden; /* Prevent overflow */
+    overflow: hidden;
 }
 
 .match-header, .team, .match-result {
@@ -124,8 +124,8 @@
     background-color: #f9f9f9;
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
     transform: scale(1.02);
-    padding-bottom: 40px; /* Extra space for the expand icon */
-    margin-bottom: 40px; /* Ensure there's enough space for expanded content */
+    padding-bottom: 40px;
+    margin-bottom: 40px;
     margin-top: 40px;
 }
 

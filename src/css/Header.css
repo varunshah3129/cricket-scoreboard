@@ -18,13 +18,13 @@
 }
 
 .menu-button {
-    display: none; /* Hidden in desktop view */
-    margin-left: auto; /* Pushes the button to the right */
-    background-color: #0056b3; /* Example: Change to your preferred solid color */
-    color: #ffffff; /* Adjust text/icon color as needed */
-    border: none; /* Remove any default border */
-    padding: 10px; /* Adjust padding as needed for sizing */
-    border-radius: 5px; /* Optional: Adds rounded corners */
+    display: none;
+    margin-left: auto;
+    background-color: #0056b3;
+    color: #ffffff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
 }
 
 .logo {
@@ -74,11 +74,11 @@
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
-    background-color: #ffffff; /* Set your desired background color */
-    color: #000000; /* Set the color of the search icon */
-    border-radius: 50%; /* Makes the background circle */
-    padding: 10px; /* Adjust the space around the icon */
-    box-shadow: 0px 0px 5px #000000; /* Adds a shadow for depth, adjust as needed */
+    background-color: #ffffff;
+    color: #000000;
+    border-radius: 50%;
+    padding: 10px;
+    box-shadow: 0px 0px 5px #000000;
 }
 
 .sign-in-button {
@@ -112,20 +112,20 @@
     z-index: 1000;
 }
 
-/* For desktop view */
+
 .desktop-search-signin .search-container {
-    order: 1; /* First item */
+    order: 1;
 }
 
 .desktop-search-signin .sign-in-button {
-    order: 2; /* Second item */
+    order: 2;
 }
 .nav-link.active {
     color: #000000;
     border-bottom: 3px solid #003d82;
 }
 
-/* Adjustments for mobile and tablet view */
+
 @media (max-width: 1024px) {
     .menu-button {
         display: block;

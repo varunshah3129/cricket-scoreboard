@@ -48,12 +48,12 @@
     margin-top: 20px;
     display: flex;
     overflow-x: auto;
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
 .rankings-subfilter-buttons::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
+    display: none;
 }
 
 .rankings-sub-filter-button {
@@ -104,7 +104,7 @@
     font-weight: bold;
 }
 
-/* Responsive design for smaller screens */
+
 @media (max-width: 768px) {
     .rankings-filter-buttons {
         flex-direction: column;
@@ -121,7 +121,7 @@
     }
 
     .rankings-list thead {
-        display: none; /* Hide table header */
+        display: none;
     }
 
     .rankings-list tr {

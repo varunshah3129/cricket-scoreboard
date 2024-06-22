@@ -17,10 +17,10 @@ const UpcomingMatchScoreCard: React.FC<UpcomingMatchScoreCardProps> = ({
             <div className="match-type">{matchFormat} </div>
             <div className="match-detail">{seriesName}</div>
             <div className="match-detail">{team1} vs {team2}</div>
-            {/* Replaced "vs" with "-" */}
+            {}
             <div className="match-venue">{venue.ground}, {venue.city}</div>
             <div className="match-status upcoming">{matchStatus}</div>
-            {/* Adjusted for upcoming matches */}
+            {}
             <div className="match-result">{matchResult}</div>
             <div className="team-info">
                 <div className="team">

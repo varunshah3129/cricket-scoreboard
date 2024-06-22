@@ -3,7 +3,7 @@
 }
 
 .points-table-group h3 {
-    color: #4E2E84; /* The color for the group name */
+    color: #4E2E84;
     margin-bottom: 10px;
     font-weight: bold;
 }
@@ -15,26 +15,26 @@
 
 .points-table th, .points-table td {
     border: none;
-    border-bottom: 1px solid #ddd; /* Only bottom border */
+    border-bottom: 1px solid #ddd;
     padding: 12px;
     text-align: left;
 }
 
 .points-table th {
-    background-color: #4E2E84; /* Match group name color */
+    background-color: #4E2E84;
     color: white;
     padding: 12px;
 }
 
 .points-table td {
-    color: #333; /* Dark text color */
+    color: #333;
 }
 
 .points-table .team-name {
     display: flex;
     align-items: center;
     font-weight: bold;
-    color: #0D0141; /* Dark purple text color for team name */
+    color: #0D0141;
 }
 
 .team-flag {
