@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MatchScoreCardProps, TeamScoreDetail, InningsScores, InningsData } from "../types/MatchTypes";
+import { MatchScoreCardProps, TeamScoreDetail, InningsScores, InningsData, VenueInfo } from "../types/MatchTypes";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner, faCircleChevronDown, faCircleChevronUp } from '@fortawesome/free-solid-svg-icons';
 import '../css/MatchScoreCard.css';
@@ -68,19 +68,6 @@ const LiveMatchScoreCard: React.FC<LiveMatchScoreCardProps> = ({
         }
     };
 
-    const renderTeamName = (team: any) => {
-        return (
-            <div className="team-name">
-                <img
-                    src={`https://www.cricbuzz.com/a/img/v1/50x50/i1/c${team.imageId}/team-flag.jpg`}
-                    alt={team.teamName}
-                    className="team-flag"
-                />
-                {team.teamName}
-            </div>
-        );
-    };
-
     return (
         <div className={`match-scorecard ${expanded ? 'expanded' : ''}`}>
             {matchStatus.toLowerCase() === "in progress" && showSpinner && (
@@ -95,11 +82,11 @@ const LiveMatchScoreCard: React.FC<LiveMatchScoreCardProps> = ({
             <div className="match-start-time">{renderMatchStartTime(startDate)}</div>
             <div className="team-info">
                 <div className="team">
-                    {renderTeamName(team1)}
+                    <div className="team-name">{team1}</div>
                     {renderInningsScores(team1Score)}
                 </div>
                 <div className="team">
-                    {renderTeamName(team2)}
+                    <div className="team-name">{team2}</div>
                     {renderInningsScores(team2Score)}
                 </div>
             </div>
