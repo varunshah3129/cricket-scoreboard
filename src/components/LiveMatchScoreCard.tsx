@@ -32,7 +32,11 @@ const LiveMatchScoreCard: React.FC<LiveMatchScoreCardProps> = ({
     const [loading, setLoading] = useState(false);
 
     const renderScore = (score: TeamScoreDetail | undefined, inningsNumber: number) => {
-        return score ? <strong>{`Inngs ${inningsNumber}: ${score.runs}/${score.wickets} (${score.overs} Ov)`}</strong> : null;
+        if (!score) return null;
+        const { runs, wickets, overs } = score;
+        return (
+            <strong>{`Inngs ${inningsNumber}: ${runs}/${wickets !== undefined ? wickets : 0} (${overs} Ov)`}</strong>
+        );
     };
 
     const renderInningsScores = (inningsScores: InningsScores | undefined) => {
