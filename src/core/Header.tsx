@@ -37,8 +37,8 @@ const Header = () => {
                     <NavLink to="/standings" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
                         Standings
                     </NavLink>
-                    <NavLink to="/videos" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
-                        Videos
+                    <NavLink to="/news" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
+                        News
                     </NavLink>
                     <NavLink to="/ranking" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
                         ICC Rankings

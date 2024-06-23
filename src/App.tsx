@@ -6,6 +6,7 @@ import Matches from './components/Matches';
 import Standings from './components/Standings';
 import Rankings from './components/Rankings';
 import ApiUsageMonitor from './ApiUsageMonitor';
+import News from './components/News'
 
 function App() {
     return (
@@ -18,6 +19,7 @@ function App() {
                         <Route path="/standings" element={<Standings />} />
                         <Route path="/ranking" element={<Rankings />} />
                         <Route path="/api-usage" element={<ApiUsageMonitor />} />
+                        <Route path="/news" element={<News />} />
                         <Route path="/" element={<Matches />} />
                     </Routes>
                 </main>

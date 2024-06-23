@@ -23,10 +23,9 @@ const apiClient: AxiosInstance = axios.create({
 const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
 const updateApiHitCount = () => {
-    const currentDate = new Date().toISOString().split('T')[0]; // Get current date
+    const currentDate = new Date().toISOString().split('T')[0];
     const apiHitData = JSON.parse(localStorage.getItem('apiHitData') || '{}');
     if (apiHitData.date !== currentDate) {
-        // Reset the counter if the date has changed
         apiHitData.date = currentDate;
         apiHitData.count = 0;
     }
@@ -39,10 +38,9 @@ const retryRequest = async (fn: () => Promise<any>, retries: number = 3, delayMs
         return await fn();
     } catch (error: any) {
         if (retries > 0 && error.response && error.response.status === 429) {
-            // 429 is the HTTP status code for rate limiting
             await delay(delayMs);
-            USE_STUB_DATA = true; // Set stub data flag to true on rate limit error
-            return retryRequest(fn, retries - 1, delayMs * 2); // Exponential backoff
+            USE_STUB_DATA = true;
+            return retryRequest(fn, retries - 1, delayMs * 2);
         } else {
             throw error;
         }
@@ -52,10 +50,10 @@ const retryRequest = async (fn: () => Promise<any>, retries: number = 3, delayMs
 const checkApiAvailability = async () => {
     try {
         await apiClient.get('/matches/v1/live');
-        USE_STUB_DATA = false; // API is available, use real data
+        USE_STUB_DATA = false;
     } catch (error: any) {
         if (error.response && error.response.status === 429) {
-            USE_STUB_DATA = true; // API is rate limited, use stub data
+            USE_STUB_DATA = true;
         }
     }
 };
@@ -189,6 +187,32 @@ export const fetchPointsTable = async (seriesId: number): Promise<any> => {
 
         return retryRequest(() => apiClient.get(url, options)).then(response => response.data);
     }
+};
+
+export const fetchNews = async (): Promise<any> => {
+    const url = '/news/v1/index';
+    const options = {
+        method: 'GET',
+        headers: {
+            'x-rapidapi-key': API_KEY,
+            'x-rapidapi-host': 'cricbuzz-cricket.p.rapidapi.com'
+        }
+    };
+
+    return retryRequest(() => apiClient.get(url, options)).then(response => response.data);
+};
+
+export const fetchNewsDetails = async (newsId: number): Promise<any> => {
+    const url = `/news/v1/detail/${newsId}`;
+    const options = {
+        method: 'GET',
+        headers: {
+            'x-rapidapi-key': API_KEY,
+            'x-rapidapi-host': 'cricbuzz-cricket.p.rapidapi.com'
+        }
+    };
+
+    return retryRequest(() => apiClient.get(url, options)).then(response => response.data);
 };
 
 export default apiClient;
