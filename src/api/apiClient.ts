@@ -6,7 +6,7 @@ import { liveStub } from '../stub/live_stub_data';
 import { recentStub } from '../stub/recent_stub_data';
 import { upComingStub } from '../stub/upcoming_stub_data';
 
-const USE_STUB_DATA: boolean = false; // Set to true for using stub data
+const USE_STUB_DATA: boolean = process.env.REACT_APP_USE_STUB_DATA === 'true'; // Set to true for using stub data
 
 const BASE_URL: string = process.env.REACT_APP_API_BASE_URL || '';
 const API_KEY: string = process.env.REACT_APP_API_KEY || '';
