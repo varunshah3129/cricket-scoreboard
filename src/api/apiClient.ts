@@ -6,7 +6,7 @@ import { liveStub } from '../stub/live_stub_data';
 import { recentStub } from '../stub/recent_stub_data';
 import { upComingStub } from '../stub/upcoming_stub_data';
 
-const USE_STUB_DATA: boolean = process.env.REACT_APP_USE_STUB_DATA === 'true'; // Set to true for using stub data
+let USE_STUB_DATA: boolean = process.env.REACT_APP_USE_STUB_DATA === 'true'; // Default to env setting
 
 const BASE_URL: string = process.env.REACT_APP_API_BASE_URL || '';
 const API_KEY: string = process.env.REACT_APP_API_KEY || '';
@@ -41,12 +41,27 @@ const retryRequest = async (fn: () => Promise<any>, retries: number = 3, delayMs
         if (retries > 0 && error.response && error.response.status === 429) {
             // 429 is the HTTP status code for rate limiting
             await delay(delayMs);
+            USE_STUB_DATA = true; // Set stub data flag to true on rate limit error
             return retryRequest(fn, retries - 1, delayMs * 2); // Exponential backoff
         } else {
             throw error;
         }
     }
 };
+
+const checkApiAvailability = async () => {
+    try {
+        await apiClient.get('/matches/v1/live');
+        USE_STUB_DATA = false; // API is available, use real data
+    } catch (error: any) {
+        if (error.response && error.response.status === 429) {
+            USE_STUB_DATA = true; // API is rate limited, use stub data
+        }
+    }
+};
+
+// Check API availability on startup
+checkApiAvailability();
 
 apiClient.interceptors.request.use(config => {
     updateApiHitCount();
@@ -72,29 +87,39 @@ export const fetchMatches = async (matchType: 'live' | 'recent' | 'upcoming'): P
 };
 
 export const fetchMatchScoreCard = async (matchId: number): Promise<any> => {
-    const url = `/mcenter/v1/${matchId}/hscard`;
-    const options = {
-        method: 'GET',
-        headers: {
-            'x-rapidapi-key': API_KEY,
-            'x-rapidapi-host': 'cricbuzz-cricket.p.rapidapi.com'
-        }
-    };
+    if (USE_STUB_DATA) {
+        console.log(`Using stub data for match ${matchId} due to flag setting.`);
+        return {}; // Add appropriate stub data if needed
+    } else {
+        const url = `/mcenter/v1/${matchId}/hscard`;
+        const options = {
+            method: 'GET',
+            headers: {
+                'x-rapidapi-key': API_KEY,
+                'x-rapidapi-host': 'cricbuzz-cricket.p.rapidapi.com'
+            }
+        };
 
-    return retryRequest(() => apiClient.get(url, options)).then(response => response.data);
+        return retryRequest(() => apiClient.get(url, options)).then(response => response.data);
+    }
 };
 
 export const fetchFlagUrl = async (imageId: number): Promise<string> => {
-    const url = `/img/v1/i1/c${imageId}/i.jpg`;
-    const options = {
-        method: 'GET',
-        headers: {
-            'x-rapidapi-key': API_KEY,
-            'x-rapidapi-host': 'cricbuzz-cricket.p.rapidapi.com'
-        }
-    };
+    if (USE_STUB_DATA) {
+        console.log(`Using stub data for image ${imageId} due to flag setting.`);
+        return 'stub-image-url'; // Return a stub image URL if needed
+    } else {
+        const url = `/img/v1/i1/c${imageId}/i.jpg`;
+        const options = {
+            method: 'GET',
+            headers: {
+                'x-rapidapi-key': API_KEY,
+                'x-rapidapi-host': 'cricbuzz-cricket.p.rapidapi.com'
+            }
+        };
 
-    return retryRequest(() => apiClient.get(url, options)).then(response => response.request.responseURL);
+        return retryRequest(() => apiClient.get(url, options)).then(response => response.request.responseURL);
+    }
 };
 
 export const fetchRankings = async (formatType: 'test' | 'odi' | 't20', category: 'teams' | 'batsmen' | 'bowlers' | 'allrounders'): Promise<any> => {
@@ -125,35 +150,45 @@ export const fetchRankings = async (formatType: 'test' | 'odi' | 't20', category
 };
 
 export const fetchSeries = async (category: string): Promise<any> => {
-    const url = `/series/v1/${category}`;
-    const options = {
-        method: 'GET',
-        headers: {
-            'x-rapidapi-key': API_KEY,
-            'x-rapidapi-host': 'cricbuzz-cricket.p.rapidapi.com'
-        }
-    };
+    if (USE_STUB_DATA) {
+        console.log(`Using stub data for series ${category} due to flag setting.`);
+        return {}; // Add appropriate stub data if needed
+    } else {
+        const url = `/series/v1/${category}`;
+        const options = {
+            method: 'GET',
+            headers: {
+                'x-rapidapi-key': API_KEY,
+                'x-rapidapi-host': 'cricbuzz-cricket.p.rapidapi.com'
+            }
+        };
 
-    try {
-        const response = await apiClient.get(url, options);
-        return response.data;
-    } catch (error) {
-        console.error('Error fetching series data:', error);
-        throw error;
+        try {
+            const response = await apiClient.get(url, options);
+            return response.data;
+        } catch (error) {
+            console.error('Error fetching series data:', error);
+            throw error;
+        }
     }
 };
 
 export const fetchPointsTable = async (seriesId: number): Promise<any> => {
-    const url = `/stats/v1/series/${seriesId}/points-table`;
-    const options = {
-        method: 'GET',
-        headers: {
-            'x-rapidapi-key': API_KEY,
-            'x-rapidapi-host': 'cricbuzz-cricket.p.rapidapi.com'
-        }
-    };
+    if (USE_STUB_DATA) {
+        console.log(`Using stub data for points table of series ${seriesId} due to flag setting.`);
+        return {}; // Add appropriate stub data if needed
+    } else {
+        const url = `/stats/v1/series/${seriesId}/points-table`;
+        const options = {
+            method: 'GET',
+            headers: {
+                'x-rapidapi-key': API_KEY,
+                'x-rapidapi-host': 'cricbuzz-cricket.p.rapidapi.com'
+            }
+        };
 
-    return retryRequest(() => apiClient.get(url, options)).then(response => response.data);
+        return retryRequest(() => apiClient.get(url, options)).then(response => response.data);
+    }
 };
 
 export default apiClient;
